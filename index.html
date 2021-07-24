@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel='stylesheet' href="./assets/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/css/uikit.min.css"/>
+</head>
+<body>
+    <header>
+        <div class="uk-text-center">
+            <h1 class="uk-heading-medium">5 Day Weather Dashboard</h1>
+        </div>
+    </header>
+    <main class="uk-flex uk-flex-center uk-margin-top">
+        <section id="weatherPanel" style="display:none;">
+            <div class="uk-container" id="weatherContainer" style="display:none;">
+                <h3 class="uk-heading-divider uk-text-light">Current Weather</h3>
+                <div class="uk-card-default uk-card uk-card-body uk-text-center" id="currentTemp">
+                    <h3 id="currentCity"></h3>
+                    <p id="currentDate"></p>
+                    <img src="" alt="" id="weatherIcon"> </img>
+                    <div class="uk-container uk-flex uk-flex-around uk-text-left" id="weatherData">
+                        <div>
+                            <p id="weatherCurrent"></p>
+                            <p id="weatherMin"></p>
+                            <p id="weatherMax"></p>
+                        </div>
+                        <div>
+                            <p id="weatherWind"></p>
+                            <p id="weatherUV"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-container" id="fcContainer" style="display:none;">
+                <h3 class="uk-heading-divider uk-text-light">5 Day Forecast</h3>
+                <div class="uk-flex uk-flex-center uk-text-center" id="forecast">
+                    
+                    <div class="uk-card-default uk-card uk-card-body" id="forecastTile">
+                        <div id="forecastHead">
+                            <h4 class="uk-text-light" id="forecastDate1"></h4>
+                            <img id="forecastIcon1"></img>
+                        </div>
+                        <div class="forecastBody" id="forecastBody">
+                            <p id="fcMinD1"></p>
+                            <p id="fcMaxD1"></p>
+                        </div>
+                    </div>
+                    <div class="uk-card-default uk-card uk-card-body" id="forecastTile">
+                        <div id="forecastHead">
+                            <h4 class="uk-text-light" id="forecastDate2"></h4>
+                            <img id="forecastIcon2"></img>
+                        </div>
+                        <div class="forecastBody" id="forecastBody">
+                            <p id="fcMinD2"></p>
+                            <p id="fcMaxD2"></p>
+                        </div>
+                    </div>
+                    <div class="uk-card-default uk-card uk-card-body" id="forecastTile">
+                        <div id="forecastHead">
+                            <h4 class="uk-text-light" id="forecastDate3"></h4>
+                            <img id="forecastIcon3"></img>
+                        </div>
+                        <div id="forecastBody">
+                            <p id="fcMinD3"></p>
+                            <p id="fcMaxD3"></p>
+                        </div>
+                    </div>
+                    <div class="uk-card-default uk-card uk-card-body" id="forecastTile">
+                        <div class="forecastHead" id="forecastHead">
+                            <h4 class="uk-text-light" id="forecastDate4"></h4>
+                            <img id="forecastIcon4"></img>
+                        </div>
+                        <div id="forecastBody">
+                            <p id="fcMinD4"></p>
+                            <p id="fcMaxD4"></p>
+                        </div>
+                    </div>
+                    <div class="uk-card-default uk-card uk-card-body" id="forecastTile">
+                        <div class="forecastHead" id="forecastHead">
+                            <h4 class="uk-text-light" id="forecastDate5"></h4>
+                            <img id="forecastIcon5"></img>
+                        </div>
+                        <div id="forecastBody">
+                            <p id="fcMinD5"></p>
+                            <p id="fcMaxD5"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="searchPanel" id="searchPanel">
+            <div class="uk-container" id="searchContainer">
+                <h3 class="uk-heading-divider uk-text-light">Search</h3>
+                <div class="uk-card-default uk-card uk-card-body">
+                    <form class="uk-search uk-search-default uk-width-1-1">
+                        <button class="uk-search-icon-flip" uk-search-icon id="buttonSearch"></button>
+                        <input class="uk-search-input" type="search" placeholder="Enter your location" id="searchInput">
+                    </form>
+                </div>
+            </div>
+            <div class="uk-container" id="historyContainer">
+                <h3 class="uk-heading-divider uk-text-light" id="historyTitle">Search History</h3>
+                <div class="uk-flex-column uk-flex" id="historyList"></div>
+            </div>
+        </section>
+        <div id="modal" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body">
+                <h2 class="uk-modal-title uk-text-center">Confirm Location</h2>
+                <form id="locForm">
+                    <p id="formMessage">Please enter your current location.</p>
+                    <div class="uk-margin uk-margin-left uk-margin-top uk-margin-right" uk-overflow-auto id="formBody"></div>
+                    <div class="uk-flex-center uk-flex" id="modalBtns">
+                        <button class="uk-button uk-button-default uk-modal-close" type="button" id="cancelBtn">Cancel</button>
+                        <button class="uk-button uk-button-primary uk-margin-left" type="submit" id="searchBtn">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit-icons.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+        <script src="./assets/index.js"></script>
+    </body>
+</html>
